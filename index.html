@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+    }
+
+    body{
+        font-family: "Poppins", sans-serif;
+       
+    }
+
+
+      .san{
+        background-color: red;
+        color: black;
+        padding: 10px;
+       text-align: center;
+        text-transform: capitalize;
+
+      }
+
+      .cont{
+        padding-left: 20px;
+        
+        width: 340px;
+        line-height: 26px;
+        margin-top: 29px;
+        margin-left: 20px;
+         background-color: black;
+        opacity: 0.9;
+        border-radius: 9px;
+        color: white;
+        padding: 10px;
+
+      }
+
+      .cont h1{
+        color: rgb(232, 30, 30); 
+        padding-top: 5px;
+      }
+      
+      .cont h5{
+        margin-top: 5px;
+      }
+
+
+      .cont button{
+        margin-top: 9px; 
+        padding: 6px;
+         border-radius: 10px;
+          background-color:rgb(232, 30, 30); 
+          border: none; 
+          color: white;
+      }
+
+      .pop{
+        background-color: black;
+        opacity:0.8;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+       z-index: 1;
+       display: none;
+
+
+      }
+      .loo{
+        display: none;
+      }
+
+      .fle{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+      }
+
+      .books{
+        z-index: 2;
+        width: 450px;  
+        padding: 10px; 
+        background-color: rgb(238, 54, 54);
+        position: absolute;
+        z-index: 2;
+        
+        border-radius: 8px;
+      }
+
+      .books input{
+        border: none; 
+         border-bottom:solid black 2px;
+          font-size: 18px; 
+          padding: 15px;
+           width: 90%;
+           background: transparent;
+           margin: 5px;
+      }
+
+      .books input:focus{
+        outline: none;
+      }
+
+      .books textarea:focus{
+        outline: none;
+      }
+       .books textarea{
+      
+            border: 2px solid black;
+          font-size: 18px; 
+          padding: 15px;
+           width: 90%;
+           background: transparent;
+           margin: 5px;
+      }
+      .books input::placeholder{
+        color: black;
+      }
+      
+      .books textarea::placeholder{
+        color: black;
+      }
+      
+      .books button{
+        background-color: black;
+        padding-left: 20px;
+        padding-right: 20px;
+        border: none;
+        color: white;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin: 5px;
+        border-radius: 5px;
+      }
+
+      
+
+      
+</style>
+</head>
+<body>
+    <div>
+        <h1 class="san">booksky</h1>
+    </div>
+    <div class="log" style="display: flex; flex-wrap: wrap;" >
+        <div class="cont" >
+            <div class="cont1 " style="margin-right: 20px;" >
+                <h1 style="color: rgb(232, 30, 30); padding-top: 5px;">Anime collections</h1>
+                <h5 style="margin-top: 5px;">Sanjay</h5>
+                <p>um. Totam dignissimi accusantium repellat dicta distinctio pariatur!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem, laudantium. Totam dignissimos a quas expedita accusantium repellat dicta distinctio pariatur!</p>
+                <button style="margin-top: 9px; padding: 6px; border-radius: 10px; background-color:rgb(232, 30, 30); border: none; color: white;" onclick="fun(event)">Delete</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="pop" id="pops"></div>
+    <div class="loo">
+        <div class="fle">
+            <div class="books">
+                <h2>Add Book</h2>
+                <form>
+                    <input type="text" placeholder="Book Title" id="in"><br>
+                    <input type="text" placeholder="Book Author" id="in1"><br>
+                    <textarea placeholder="Short Description" id="in2"></textarea><br>
+                    <button onclick="func(event)" id="in3">ADD</button>
+                    <button id="don">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <button id="dems" onclick="add()" style="position:fixed; right: 30px; bottom: 30px; border:none; color: white; background-color: rgb(232, 30, 30); width: 67px; height: 67px; border-radius: 50px; font-size: 30px;">+</button>
+    
+    <script>
+        var a = document.querySelector(".pop");
+        var b = document.querySelector(".loo");
+        var c = document.getElementById("dems");
+    
+        function add() {
+            a.style.display = "block";
+            b.style.display = "block";
+        }
+    
+        var d = document.getElementById("don");
+        d.addEventListener("click", function(event) {
+            event.preventDefault();
+            a.style.display = "none";
+            b.style.display = "none";
+        });
+    
+        var e = document.querySelector(".log");
+        var f = document.getElementById("in");
+        var g = document.getElementById("in1");
+        var h = document.getElementById("in2");
+    
+        function func(event) {
+            event.preventDefault();
+    
+            if (f.value.trim() === "" || g.value.trim() === "" || h.value.trim() === "") {
+                alert("Please fill in all fields.");
+                return;
+            }
+    
+            var div = document.createElement("div");
+            div.setAttribute("class", "cont");
+            div.innerHTML = `
+                <h1>${f.value}</h1>
+                <h5>${g.value}</h5>
+                <p>${h.value}</p>
+                <button onclick="Delete(event)">Delete</button>
+            `;
+    
+            e.appendChild(div);
+    
+            f.value = "";
+            g.value = "";
+            h.value = "";
+    
+            a.style.display = "none";
+            b.style.display = "none";
+        }
+    
+        function Delete(event) {
+            event.target.parentElement.remove();
+        }
+
+        function fun(event){
+          event.target.parentElement.remove();
+          
+        }
+    </script>
+    
+</body>
+</html>
